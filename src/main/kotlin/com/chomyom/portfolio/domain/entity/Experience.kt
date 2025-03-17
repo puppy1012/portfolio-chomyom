@@ -44,7 +44,7 @@ class Experience(
      * - 종료 정보가 없으면 "Present" 반환
      */
     fun getEndYearMonth(): String {
-        if (endYear == null || endMonth == null) {
+        if (endYear == null || endMonth == null) { //둘다 null일시
             return "Present" // 진행 중인 경우 표시
         }
         return "${endYear}.${endMonth}" // "YYYY.MM" 형식 반환
@@ -62,7 +62,7 @@ class Experience(
         endMonth: Int?,
         isActive: Boolean
     ) {
-        this.title = title
+        this.title = title //"함수 호출 시 전달받은 새 title 값을 클래스 내부의 기존 멤버변수 title에 덮어씌운다."
         this.description = description
         this.startYear = startYear
         this.startMonth = startMonth
@@ -73,6 +73,14 @@ class Experience(
 
     /**
      * ExperienceDetail 객체 목록을 기존 목록에 추가하는 메서드
+     * 멤버 변수(Member Variable): 클래스 내부에 선언한 변수. 클래스 전체에서 접근 가능.
+     * 지역 변수(Local Variable): 특정 함수나 블록 내부에 선언된 변수로, 그 블록 안에서만 접근 가능.
+     * 파라미터(매개변수): 함수를 호출할 때 외부에서 전달받는 값.
+     *
+     * 처음에 details라는 변수를 빈 리스트로 선언한 후,
+     * 이후 addDetails()라는 함수가 호출될 때 파라미터로 들어오는 details 값을
+     * 조건문으로 null 여부를 체크하고,
+     * null이 아니면 클래스 내부의 멤버변수인 details 리스트에 추가하는 것이다.
      */
     fun addDetails(details: MutableList<ExperienceDetail>?) {
         if (details != null) {
